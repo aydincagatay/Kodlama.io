@@ -13,8 +13,8 @@ namespace Persistence.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Language { get; set; }
-       
 
+        public DbSet<LanguageTech> LanguageTech { get; set; }
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
@@ -37,12 +37,23 @@ namespace Persistence.Contexts
                 a.Property(p => p.Active).HasColumnName("Active");
             });
 
+            modelBuilder.Entity<LanguageTech>(a =>
+            {
+                a.ToTable("LanguageTechs").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.LanguageId).HasColumnName("LanguageId");
+                a.Property(p => p.Name).HasColumnName("Name");
+                a.Property(p => p.Active).HasColumnName("Active");
+                a.HasOne(p => p.Language);
+            });
 
 
             Language[] languageEntitySeeds = { new(1, "Python", 1), new(2, "Java", 1) };
             modelBuilder.Entity<Language>().HasData(languageEntitySeeds);
 
-           
+            LanguageTech[] languageTechEntitySeeds = { new(1, "Django",1, 1), new(2, "Tensorflow", 1, 1), new(3, "Maven", 1, 2) };
+            modelBuilder.Entity<LanguageTech>().HasData(languageTechEntitySeeds);
+
         }
     }
 }
