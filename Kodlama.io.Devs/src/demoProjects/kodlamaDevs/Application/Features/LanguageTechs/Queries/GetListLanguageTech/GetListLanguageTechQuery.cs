@@ -6,6 +6,7 @@ using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,10 @@ namespace Application.Features.LanguageTechs.Queries.GetListLanguageTech
 
             public async Task<LanguageTechListModel> Handle(GetListLanguageTechQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<LanguageTech> languageTechs = await _languageTechRepository.GetListAsync(index: request.PageRequest.Page, size:request.PageRequest.PageSize);
+                IPaginate<LanguageTech> languageTechs = await _languageTechRepository.GetListAsync(include:
+                    m=>m.Include(c=>c.Language),
+                    index: request.PageRequest.Page, 
+                    size:request.PageRequest.PageSize);
 
                 LanguageTechListModel mappedLanguageTechListModel = _mapper.Map<LanguageTechListModel>(languageTechs);
                 return mappedLanguageTechListModel;

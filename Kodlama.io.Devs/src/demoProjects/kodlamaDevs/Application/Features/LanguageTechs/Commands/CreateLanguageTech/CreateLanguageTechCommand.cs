@@ -1,5 +1,4 @@
-﻿using Application.Features.Languages.Dtos;
-using Application.Features.LanguageTechs.Dtos;
+﻿using Application.Features.LanguageTechs.Dtos;
 using Application.Features.LanguageTechs.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -16,6 +15,7 @@ namespace Application.Features.LanguageTechs.Commands.CreateLanguageTech
     public partial class CreateLanguageTechCommand : IRequest<CreatedLanguageTechDto>
     {
         public string Name { get; set; }
+        public int LanguageId { get; set; }
 
         public class CreateLanguageTechCommandHandler : IRequestHandler<CreateLanguageTechCommand, CreatedLanguageTechDto>
         {

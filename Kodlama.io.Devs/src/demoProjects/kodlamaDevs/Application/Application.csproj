@@ -7,7 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\LanguageTechs\Profiles\" />
 		<Folder Include="Features\Languages\Constants\" />
 		<Folder Include="Features\Languages\Models\" />
 	</ItemGroup>

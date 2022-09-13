@@ -1,5 +1,4 @@
-﻿using Application.Features.Languages.Dtos;
-using Application.Features.LanguageTechs.Dtos;
+﻿using Application.Features.LanguageTechs.Dtos;
 using Application.Features.LanguageTechs.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -11,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.LanguageTechs.Commands.UpdateLanguage
+namespace Application.Features.LanguageTechs.Commands.UpdateLanguageTech
 {
     public partial class UpdateLanguageTechCommand : IRequest<UpdatedLanguageTechDto>
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Active { get; set; }
+        public int LanguageId { get; set; }
 
         public class UpdateLanguageTechCommandHandler : IRequestHandler<UpdateLanguageTechCommand, UpdatedLanguageTechDto>
         {

@@ -1,14 +1,12 @@
 ﻿using Application.Features.LanguageTechs.Dtos;
 using Application.Features.LanguageTechs.Commands.CreateLanguageTech;
-//using Application.Features.LanguageTechs.Commands.UpdateLanguageTech;
+using Application.Features.LanguageTechs.Commands.UpdateLanguageTech;
 using Application.Features.LanguageTechs.Commands.DeleteLanguageTech;
 using Application.Features.LanguageTechs.Queries.GetListLanguageTech;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using Application.Features.Languages.Dtos;
-using Application.Features.LanguageTechs.Commands.UpdateLanguage;
 
 namespace WebAPI.Controllers
 {
